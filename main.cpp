@@ -14,7 +14,12 @@ int main() {
   int frame_num = 900; 
   std::string ext = ".jpg";
 
-  image_to_video(result, image_name, ext, frame_num, frame_rate);
+  int ret = image_to_video(result, image_name, ext, frame_num, frame_rate);
+
+  if (ret)
+    std::cout << "フレームが指定の数ありませんでした" << std::endl;
+  else
+    std::cout << "動画の書き出しが完了しました。" << std::endl;
 
   return 0;
   

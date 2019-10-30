@@ -5,7 +5,7 @@
 #include <opencv2/opencv.hpp>
 
 /* 複数の画像ファイルから動画を作成する関数 */
-void image_to_video(std::string result, std::string image_name, std::string ext, int frame_num, double frame_rate) {
+int image_to_video(std::string result, std::string image_name, std::string ext, int frame_num, double frame_rate) {
 
   // {image_name}_00x.ext にするための桁数の取得
   int digit = std::to_string(frame_num).length();
@@ -38,14 +38,13 @@ void image_to_video(std::string result, std::string image_name, std::string ext,
     */
 
     if (Img.empty()) {
-      std::cout << "フレームが指定の数ありませんでした" << std::endl;
-      break;
+      return -1;
     }
 
     // フレームの書き出し
     writer << Img;
 
   }
-  std::cout << "動画の書き出しが完了しました。" << std::endl;
+  return 0;
 }
 
