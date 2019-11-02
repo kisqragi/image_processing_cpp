@@ -13,8 +13,6 @@ int image_to_video(std::string result, std::string image_name, std::string ext, 
   base << image_name << "_" << std::setw(digit) << std::setfill('0') << 0 << ext;
   cv::Mat Img = cv::imread(base.str().c_str());
 
-  namedWindow("image", cv::WINDOW_AUTOSIZE);
-
   int fourcc = cv::VideoWriter::fourcc('m', 'p', '4', 'v');
   cv::VideoWriter writer(result, fourcc, frame_rate, cv::Size(Img.cols, Img.rows), true);
 
