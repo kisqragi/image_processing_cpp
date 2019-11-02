@@ -133,11 +133,7 @@ int image_composition(std::string base_path, std::string fg_path, std::string bg
   cv::Mat fg_down;
   cv::bitwise_and(roi, roi, fg_down, mask_inv);  
 
-  cv::Mat fg_up;
-  cv::bitwise_and(fg, fg, fg_up, mask);  
-
-  cv::Mat dst;
-  cv::add(fg_down, fg_up, roi);
+  cv::add(fg_down, fg, roi);
 
   cv::imwrite(result_path.c_str(), bg);
 

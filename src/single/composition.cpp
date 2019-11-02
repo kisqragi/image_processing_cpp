@@ -56,13 +56,10 @@ int image_composition(std::string base_path, std::string fg_path, std::string bg
   cv::Mat fg_down;
   cv::bitwise_and(roi, roi, fg_down, mask_inv);  
 
-  cv::Mat fg_up;
-  cv::bitwise_and(fg, fg, fg_up, mask);  
-
-  cv::Mat dst;
-  cv::add(fg_down, fg_up, roi);
+  cv::add(fg, fg_down, roi);
 
   cv::imwrite(result_path.c_str(), bg);
+  
 
   return 0;
 
@@ -76,7 +73,7 @@ int main() {
   std::string result_path = "../../result/result.jpg";
   int x_pos = 0;
   int y_pos = 0;
-  int th = 15;
+  int th = 10;
 
   int ret = image_composition(base_path, fg_path, bg_path, result_path, x_pos, y_pos, th);
 
