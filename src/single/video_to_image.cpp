@@ -48,9 +48,10 @@ int main() {
 
   int ret = video_to_image(result_image_name, video_path, ext);
 
-  if (!ret)
+  if (!ret && ret != -1) {
     std::cout << "画像の書き出しが完了しました。" << std::endl;
     std::cout << "動画の枚数は" << ret << "枚です。" << std::endl;
+  }
 
   return 0;
   
